@@ -1,0 +1,31 @@
+<!-- result.html -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Kết quả chuẩn đoán</title>
+</head>
+<body>
+    <h2>Thông tin bệnh nhân:</h2>
+    <p>Tuổi: {{ age }}</p>
+    <p>Giới tính: {% if gender == 0 %}Nữ{% else %}Nam{% endif %}</p>
+    <p>Cholesterol: {{ cholesterol }}</p>
+    <p>Huyết áp: {{ blood_pressure }}</p>
+    <p>Đường huyết: {% if blood_sugar == 0 %}Normal{% else %}Abnormal{% endif %}</p>
+    <p>Nghỉ ngơi ECG: {% if resting_ecg == 0 %}Normal{% else %}Abnormal{% endif %}</p>
+    <p>Nhip tim đập tối đa: {{ max_heart_rate }}</p>
+    <p>Đau thắt ngực khi tạp thể duc: {% if exercise_induced_angina %}Yes{% else %}No{% endif %}</p>
+    <p>Độ giảm ST: {{ st_depression }}</p>
+    <p>Góc độ dốc ST: {% if st_slope == 0 %}Tăng dần{% elif st_slope == 1 %}Flat{% else %}Giảm dần{% endif %}</p>
+    <p>Tình trạng đau lưng: {% if thalassemia == 0 %}Bình thường{% elif thalassemia == 1 %}Khuyến tật cố định{% else %}Khuyến tật có thể đảo ngược{% endif %}</p></p>
+    <p>số lượng mạch chính bị thu hẹp: {{ num_major_vessels }}</p>
+    <p>Thalassemia: {% if thalassemia == 0 %}Bình thường{% elif thalassemia == 1 %}Khuyến tật cố định{% else %}Khuyến tật có thể đảo ngược{% endif %}</p>
+
+    <h1>Kết quả chuẩn đoán</h1>
+    {% if prediction == 0 %}
+        <p>Bệnh nhân không bị bệnh động mạch vành.</p>
+    {% else %}
+        <p>Bệnh nhân bị bệnh động mạch vành.</p>
+    {% endif %}
+</body>
+</html>

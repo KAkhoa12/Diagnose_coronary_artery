@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Danh sách bênh nhân</title>
+    <style>
+        a{
+            display: inline-block;
+            padding: 10px 30px;
+            background-color: black;
+            border-radius: 5px;
+            color:white;
+            text-decoration: none;
+        }
+        table{
+            width: 100%;
+            margin-top: 600px;
+        }
+        body{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Danh sách bệnh nhân</h1>
+    <table>
+        <thead>
+            <tr>
+                <td>STT</td>
+                <td>Tên</td>
+                <td>tuổi</td>
+                <td>Giới tính</td>
+                <td>Thêm</td>
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in patients %}
+            <tr>
+                <td>{{ row.id }}</td>
+                <td>{{ row.name }}</td>
+                <td>{{ row.age }}</td>
+                <td>{{ row.gender }}</td>
+                <td><a href="{% url 'patient_detail' row.id %}">chi tiết bệnh nhân</a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <a href="{% url 'index' %}">Trờ về </a>
+</body>
+
+</html>

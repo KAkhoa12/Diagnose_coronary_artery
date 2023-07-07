@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        a{
+            display: inline-block;
+            padding: 10px 30px;
+            background-color: black;
+            border-radius: 5px;
+            color:white;
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body>
+    <form method="get" action="">
+        {% csrf_token %}
+        <label for="name">Tên:</label>
+        <input type="text" id="name" name="name" {% if patient %}value="{{ patient.name }} " disabled{% endif %}>
+        <br><br>
+        <label for="age">Tuổi:</label>
+        <input type="text" id="age" name="age"  {% if patient %}value="{{ patient.age }} " disabled{% endif %}>
+        <input type="hidden" id="age_hidden" name="age_hidden" value="{{ patient.age }}">
+        <br><br>
+
+        <label for="gender">Giới tính:</label>
+        <select id="gender" name="gender" disabled>
+            <option value="Male" {% if patient and patient.gender == 'Male' %}selected{% endif %}>Nam</option>
+            <option value="Female" {% if patient and patient.gender == 'Female' %}selected{% endif %}>Nữ</option>
+        </select>
+        <br><br>
+
+        <label for="cholesterol">Cholesterol:</label>
+        <input type="text" id="cholesterol" name="cholesterol" {% if patient %}value="{{ patient.cholesterol }} " disabled{% endif %}>
+        <input type="hidden" id="cholesterol_hidden" name="cholesterol_hidden" value="{{ patient.cholesterol }}">
+        <br><br>
+
+        <label for="blood_pressure">Huyết áp:</label>
+        <input type="text" id="blood_pressure" name="blood_pressure" {% if patient %}value="{{ patient.blood_pressure }} " disabled{% endif %}>
+        <input type="hidden" id="blood_pressure_hidden" name="blood_pressure_hidden" value="{{ patient.blood_pressure }}">
+        <br><br>
+        
+        <label for="blood_sugar">Đường huyết:</label>
+        <select id="blood_sugar" name="blood_sugar" disabled>
+            <option value="Normal" {% if patient and patient.blood_sugar == 'Normal' %}selected{% endif %}>Bình thường</option>
+            <option value="High" {% if patient and patient.blood_sugar == 'High' %}selected{% endif %}>Cao</option>
+        </select>
+        <br><br>
+        
+        <label for="resting_ecg">ECG nghỉ ngơi:</label>
+        <select id="resting_ecg" name="resting_ecg" disabled>
+            <option value="Normal" {% if patient and patient.resting_ecg == 'Normal' %}selected{% endif %}>Bình thường</option>
+            <option value="Abnormal" {% if patient and patient.resting_ecg == 'Abnormal' %}selected{% endif %}>Bất thường</option>
+        </select>
+        <br><br>
+        
+        <label for="max_heart_rate">Nhịp tim tối đa:</label>
+        <input type="text" id="max_heart_rate" name="max_heart_rate" {% if patient %}value="{{ patient.max_heart_rate }} " disabled{% endif %}>
+        <input type="hidden" id="max_heart_rate_hidden" name="max_heart_rate_hidden" value="{{ patient.max_heart_rate }}">
+        <br><br>
+
+
+        <label for="exercise_induced_angina">Đau thắt ngực sau khi tập thể dục:</label>
+        <input type="checkbox" id="exercise_induced_angina" name="exercise_induced_angina" {% if patient and patient.exercise_induced_angina %}checked{% endif %} disabled>
+        <br><br>
+        
+
+        <label for="st_depression">Độ giảm ST:</label>
+        <input type="text" id="st_depression" name="st_depression" {% if patient %}value="{{ patient.st_depression }} " disabled{% endif %}>
+        <input type="hidden" id="st_depression_hidden" name="st_depression_hidden" value="{{ patient.st_depression }}">
+        <br><br>
+
+
+        <label for="st_slope">Góc độ dốc ST:</label>
+        <select id="st_slope" name="st_slope" disabled>
+            <option value="Upsloping" {% if patient and patient.st_slope == 'Upsloping' %}selected{% endif %}>Tăng dần</option>
+            <option value="Flat" {% if patient and patient.st_slope == 'Flat' %}selected{% endif %}>Bằng phẳng</option>
+            <option value="Downsloping" {% if patient and patient.st_slope == 'Downsloping' %}selected{% endif %}>Giảm dần</option>
+        </select>
+        <br><br>
+        
+        <label for="chest_pain">Loại đau ngực:</label>
+        <select id="chest_pain" name="chest_pain" disabled>
+            <option value="0" {% if patient and patient.chest_pain == '0' %}selected{% endif %}>Không đau</option>
+            <option value="1" {% if patient and patient.chest_pain == '1' %}selected{% endif %}>Đau không ổn định</option>
+            <option value="2" {% if patient and patient.chest_pain == '2' %}selected{% endif %}>Đau vừa</option>
+            <option value="3" {% if patient and patient.chest_pain == '3' %}selected{% endif %}>Đau nặng</option>
+        </select>
+        <br><br>
+        
+        <label for="num_major_vessels">Số lượng mạch chính bị thu hẹp:</label>
+        <input type="text" id="num_major_vessels" name="num_major_vessels" {% if patient %}value="{{ patient.num_major_vessels }} " disabled{% endif %}>
+        <input type="hidden" id="num_major_vessels_hidden" name="num_major_vessels_hidden" value="{{ patient.num_major_vessels }}">
+        <br><br>
+        
+        <label for="thalassemia">Thalassemia:</label>
+        <select id="thalassemia" name="thalassemia" disabled>
+            <option value="Normal" {% if patient and patient.thalassemia == 'Normal' %}selected{% endif %}>Bình thường</option>
+            <option value="Fixed Defect" {% if patient and patient.thalassemia == 'Fixed Defect' %}selected{% endif %}>Khuyết tật cố định</option>
+            <option value="Reversible Defect" {% if patient and patient.thalassemia == 'Reversible Defect' %}selected{% endif %}>Khuyết tật có thể đảo ngược</option>
+        </select>
+        <br><br>
+
+        <a href="{% url 'list_patient' %}">Trờ về </a>
+    </form>
+    
+</body>
+
+</html>

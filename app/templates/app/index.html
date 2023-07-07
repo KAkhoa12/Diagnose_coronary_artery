@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trang chủ</title>
+    <style>
+        a{
+            display: inline-block;
+            padding: 10px 30px;
+            background-color: black;
+            border-radius: 5px;
+            color:white;
+            text-decoration: none;
+        }
+        body{
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>Trang chuẩn đoán bệnh nhân bị bệnh động mạch vành
+    </h1>
+    <div style="display: flex; gap: 20px">
+        <a href="{% url 'list_patient'%}">Danh sách bệnh nhân</a>
+        <a href="{% url 'save_patient'%}">thêm bệnh nhân để chuẩn đoán</a>
+    </div>
+</body>
+</html>
